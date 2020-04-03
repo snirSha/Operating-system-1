@@ -6,7 +6,7 @@
 #include <unistd.h>
 
 #define STACK_SIZE 10000
-#define CYCLES 1000
+#define CYCLES 10
 #define ONE_SECOND 1000000
 char childStack[STACK_SIZE+1];
 
@@ -20,13 +20,13 @@ void print(const char *text){
 int child(void *params){
    print("Child thread");
 }
-int main(){
+int ourClone(){
 
    //int ans = clone(child, childStack+STACK_SIZE,0,0);
-   //int ans = clone(child, childStack+STACK_SIZE,CLONE_PARENT,0);
+   int ans = clone(child, childStack+STACK_SIZE,CLONE_PARENT,0);
    printf("clone ans = %d\n", ans);
 
-   printf("Parent");
+   print("Parent");
 
-   return 0;
+   return 1;
 }

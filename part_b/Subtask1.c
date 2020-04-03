@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int main(){
+int ourFork(){
     pid_t pid;
 
     pid = fork();
@@ -22,7 +22,7 @@ int main(){
         else printf("Child\n");
     }
     else printf("perent\n");
-    return 0;
+return 1;
 }
 
 

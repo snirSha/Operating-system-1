@@ -7,7 +7,7 @@
 
 #define THREE_SECOND 3000000
 
-int main(){
+int ourDeamon(){
 
     pid_t pid = fork();
 
@@ -16,10 +16,10 @@ int main(){
     //Move the root dir, used to not block the file system.
     chdir("/");
 
-    //Mmove thr child to another session, so the parent may be closed.
+    //Move the child to another session, so the parent may be closed.
     setsid();
 
-    printf("Starting the deamon\n");
+    printf("Daaemon is running\n");
 
     //Close output chanels
     fclose(stdout);
@@ -38,5 +38,5 @@ int main(){
     }
     else printf("Deamon PID %d\n", pid);
 
-   return 0;
+   return 1;
 }
