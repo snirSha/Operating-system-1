@@ -16,8 +16,13 @@ int ourFork(){
     else if (pid == 0){ 
 
         pid_t pid = fork();
-        if(pid == 0) 
+        if(pid == 0){
             printf("Grand child\n");
+
+            char * args[2] = {"./friend",NULL};		
+            execvp(args[0],args);
+        }
+
     
         else printf("Child\n");
     }

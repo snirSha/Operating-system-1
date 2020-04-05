@@ -7,7 +7,7 @@
 
 #define THREE_SECOND 3000000
 
-int ourDeamon(){
+int ourDaemon(){
 
     pid_t pid = fork();
 
@@ -19,7 +19,7 @@ int ourDeamon(){
     //Move the child to another session, so the parent may be closed.
     setsid();
 
-    printf("Daaemon is running\n");
+    printf("Daemon is running\n");
 
     //Close output chanels
     fclose(stdout);
@@ -27,16 +27,16 @@ int ourDeamon(){
     fclose(stderr);
 
     //Open log
-    openlog("Deamon\n", LOG_PID, LOG_DAEMON);
-    syslog(LOG_NOTICE, "Deamon started\n");
+    openlog("Daemon\n", LOG_PID, LOG_DAEMON);
+    syslog(LOG_NOTICE, "Daemon started\n");
     usleep(THREE_SECOND);
-    syslog(LOG_NOTICE, "Deamon working...\n");
+    syslog(LOG_NOTICE, "Daemon working...\n");
     usleep(THREE_SECOND);
-    syslog(LOG_NOTICE, "Deamon finished\n");
+    syslog(LOG_NOTICE, "Daemon finished\n");
 
 
     }
-    else printf("Deamon PID %d\n", pid);
+    else printf("Daemon PID %d\n", pid);
 
    return 1;
 }
