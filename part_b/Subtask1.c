@@ -17,16 +17,15 @@ int ourFork(){
 
         pid_t pid = fork();
         if(pid == 0){
-            printf("Grand child\n");
+            print("Grand child");
 
             char * args[2] = {"./friend",NULL};		
             execvp(args[0],args);
         }
 
-    
-        else printf("Child\n");
+        else print("Child");
     }
-    else printf("perent\n");
+    else print("perent");
 return 1;
 }
 

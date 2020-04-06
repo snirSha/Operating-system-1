@@ -22,9 +22,9 @@ int ourDaemon(){
     printf("Daemon is running\n");
 
     //Close output chanels
-    fclose(stdout);
-    fclose(stdin);
-    fclose(stderr);
+    close(stdout);
+    close(stdin);
+    close(stderr);
 
     //Open log
     openlog("Daemon\n", LOG_PID, LOG_DAEMON);
@@ -38,5 +38,5 @@ int ourDaemon(){
     }
     else printf("Daemon PID %d\n", pid);
 
-   return 1;
+   return 0;
 }

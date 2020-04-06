@@ -22,7 +22,6 @@ int child(void *params){
 }
 int ourClone(){
 
-   //int ans = clone(child, childStack+STACK_SIZE,0,0);
    int ans = clone(child, childStack+STACK_SIZE,CLONE_PARENT,0);
    printf("clone ans = %d\n", ans);
 

@@ -3,14 +3,16 @@
 
 int main()
 {
+
+    printf("********Fork :*********\n");
+    ourFork();
+
     printf("********Clone :*********\n");
     ourClone();
 
     printf("********Daemon :********\n");
     ourDaemon();
 
-    printf("********Fork :*********\n");
-    ourFork();
 
     return 0;
 }
