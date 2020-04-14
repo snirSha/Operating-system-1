@@ -1,4 +1,3 @@
-#include "hello_Ariel.h"
 #include <stdio.h>
 #include <stdbool.h>
 #include <dlfcn.h>
@@ -7,22 +6,22 @@
 
 void (*message)(const char*);
 
-bool initLibrary()
+bool initLibrary()//Dynamic library loading
 {
-    void *sdl_library = dlopen("./lib.so", RTLD_LAZY);
-    if (sdl_library == NULL)
+    void *hdl_library = dlopen("./lib.so", RTLD_LAZY);//Open our library and get an handler
+    if (hdl_library == NULL)
         return false;
-    message = (void (*)(const char *))dlsym(sdl_library, "message");
-    if (sdl_library == NULL)
+    message = (void (*)(const char *))dlsym(hdl_library, "sayHello");//Find this function
+    if (message == NULL)
         return false;
     else
     {
-        return true;
+        return true;//Success
     }
 }
 int main()
 {
-    if(initLibrary()){
+    if(initLibrary()){//If the library was found-- print the message
         message("hello Ariel\n");
     }
     else{
