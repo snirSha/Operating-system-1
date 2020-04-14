@@ -2,6 +2,6 @@
 #include <stdio.h>
 
 int main(){
-    sayHello();
+    sayHello();// A simple hello message
     return 0;
 }
