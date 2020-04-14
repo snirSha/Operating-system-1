@@ -10,19 +10,21 @@
 #define ONE_SECOND 1000000
 char childStack[STACK_SIZE+1];
 
-void print(const char *text){
+void print(const char *text){//The function fork and clone processes are using
 
    for(int i=0; i<CYCLES; i++){
-      printf("Hello from %s\n", text);
+      printf("Hello from %s\n", text);//A simple function that prints 10 times "Hello" message
       usleep(ONE_SECOND);
    }
 }
-int child(void *params){
+
+int child(void *params){//A simple function to distinguish between the child and the parent thread
    print("Child thread");
 }
+
 int ourClone(){
 
-   int ans = clone(child, childStack+STACK_SIZE,CLONE_PARENT,0);
+   int ans = clone(child, childStack+STACK_SIZE,CLONE_PARENT,0);// run "child" in "childStack"'s size and clone parent
    printf("clone ans = %d\n", ans);
 
    print("Parent");
