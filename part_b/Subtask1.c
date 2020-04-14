@@ -3,32 +3,36 @@
 #include <stdio.h>
 #include <unistd.h>
 
+
 int ourFork(){
     pid_t pid;
 
-    pid = fork();
+    pid = fork();//Create child process 
 
-    if(pid < 0){//error
+    if(pid < 0){//Error - something went wrong
         fprintf(stderr, "Fork faild");
         return 1;
     }
 
-    else if (pid == 0){ 
+    else if (pid == 0){//Success in making child process 
 
-        pid_t pid = fork();
-        if(pid == 0){
+        pid_t pid = fork();//Create grand child process
+
+        if(pid == 0) {//Success in making grand child process 
             print("Grand child");
 
-            char * args[2] = {"./friend",NULL};		
+            char * args[2] = {"./Subtask2.1",NULL};//File name and arguments		
             execvp(args[0],args);
-        }
+	//The exec type system calls allow a process to run any program files
 
-        else print("Child");
+        } 
+        else print("Child");//Done with grand child, now we in child process
     }
-    else print("perent");
-return 1;
-}
+    else print("perent");//Done with child, now we in parent process
 
+    
+    return 0;
+}
 
 
 
